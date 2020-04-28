@@ -2,12 +2,20 @@ apiVersion: appsody.dev/v1beta1
 kind: AppsodyApplication
 metadata:
   annotations:
+    commit.image.appsody.dev/author: Bhattacharyya, B <b.bhattacharyya@accenture.com>
+    commit.image.appsody.dev/committer: Bhattacharyya, B <b.bhattacharyya@accenture.com>
+    commit.image.appsody.dev/date: Tue Apr 28 00:06:30 2020 +0530
+    commit.image.appsody.dev/message: initial commit
     commit.stack.appsody.dev/author: Harish Yayi <yharish991@gmail.com>
     commit.stack.appsody.dev/committer: GitHub <noreply@github.com>
     commit.stack.appsody.dev/contextDir: /incubator/java-spring-boot2
     commit.stack.appsody.dev/date: Wed Apr 15 16:05:23 2020 +0100
     commit.stack.appsody.dev/message: ' java-spring-boot2: add kafka template (#742)'
-    image.opencontainers.org/created: "2020-04-26T22:43:56+05:30"
+    image.opencontainers.org/created: "2020-04-28T12:58:06+05:30"
+    image.opencontainers.org/documentation: https://github.com/barnalib/dnb-transaction
+    image.opencontainers.org/revision: e9e0f06ac5bb40e5daa9dba9b974a0e463097792-modified
+    image.opencontainers.org/source: https://github.com/barnalib/dnb-transaction/tree/master
+    image.opencontainers.org/url: https://github.com/barnalib/dnb-transaction
     stack.appsody.dev/authors: Erin Schnabel <schnabel@us.ibm.com>, Ozzy Osborne <ozzy@ca.ibm.com>,
       Richard Trotter <rtrotter@us.ibm.com>, Harish Yayi <hyayi@us.ibm.com>
     stack.appsody.dev/configured: docker.io/appsody/java-spring-boot2:0.3
@@ -25,7 +33,7 @@ metadata:
     image.opencontainers.org/title: dnb-transaction
     stack.appsody.dev/id: java-spring-boot2
     stack.appsody.dev/version: 0.3.29
-  name: dnb-transaction-staging
+  name: dnb-transaction
   namespace: cpfa-dnb
 spec:
   applicationImage: docker-registry.default.svc:5000/cpfa-dnb/dnb-transaction:v4
@@ -60,7 +68,7 @@ spec:
     requests:
       cpu: 75m
   route:
-    host: dnb-transaction-staging-cpfa-dnb.mcmhub-demo01-32d7c19d4374c7b6f6308b1ef2de3e3e-0001.us-east.containers.appdomain.cloud
+    host: dnb-transaction-cpfa-dnb.mcmhub-demo01-32d7c19d4374c7b6f6308b1ef2de3e3e-0001.us-east.containers.appdomain.cloud
   service:
     annotations:
       prometheus.io/path: /actuator/prometheus

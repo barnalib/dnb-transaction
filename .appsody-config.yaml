@@ -1,0 +1,3 @@
+id: "20200426102043.23837700"
+project-name: dnb-transaction
+stack: docker.io/appsody/java-spring-boot2:0.3
