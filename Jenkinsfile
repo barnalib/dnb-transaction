@@ -1,4 +1,4 @@
-podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'cpfa', containers: [
+podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operator', containers: [
     containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', ttyEnabled: true, command: 'cat',
                       envVars: [ envVar(key: 'TAG', value: 'v4'),
                                 envVar(key: 'IMAGENAME', value: 'dnb-transaction'),
