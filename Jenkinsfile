@@ -30,7 +30,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
         stage('Set A-B Route') {
            container('kubectl') {
               openshift.withCluster() {
-                openshift.withProject() {
+                
                    def route = openshift.selector("routes", "dnb-transaction") //(1)
                    println "Route: ${route}"
                    def routeObj = route.object()
@@ -38,7 +38,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
                    routeObj.spec.alternateBackends = []
                    routeObj.spec.alternateBackends[0] = ["kind": "Service","name": "${B_APP}", "weight": 60] //(2)
                    openshift.apply(routeObj) //(3)
-                }
+                
             }
     }
 }
