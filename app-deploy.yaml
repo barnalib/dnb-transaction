@@ -67,8 +67,6 @@ spec:
   resourceConstraints:
     requests:
       cpu: 75m
-  route:
-    host: dnb-transaction-cpfa-dnb.mcmhub-demo01-32d7c19d4374c7b6f6308b1ef2de3e3e-0001.us-east.containers.appdomain.cloud
   service:
     annotations:
       prometheus.io/path: /actuator/prometheus
