@@ -3,7 +3,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
                       envVars: [ envVar(key: 'TAG', value: 'v4'),
                                 envVar(key: 'ROLLBACKTAG', value: 'v3'),
                                 envVar(key: 'IMAGENAME', value: 'dnb-transaction'),
-                                envVar(key: 'B_APP', value: 'dnb-transaction-staging')
+                                envVar(key: 'B_APP', value: 'dnb-transaction-staging'),
                                envVar(key: 'PROJECT', value: 'cpfa-dnb')])
   ]){
     node('label') {
