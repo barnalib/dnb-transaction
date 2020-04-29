@@ -30,19 +30,25 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
         stage('Set A-B Route') {
            container('kubectl') {
               openshift.withCluster() {
-                
-                   def route = openshift.selector("routes", "dnb-transaction") //(1)
-                   println "Route: ${route}"
-                   def routeObj = route.object()
-                   println "Route: ${routeObj}"
-                   routeObj.spec.alternateBackends = []
-                   routeObj.spec.alternateBackends[0] = ["kind": "Service","name": "${B_APP}", "weight": 60] //(2)
-                   openshift.apply(routeObj) //(3)
+                openshift.withProject() {
+                        echo "Using project: ${openshift.project()}"
+                    }
+                   //def route = openshift.selector("routes", "dnb-transaction") //(1)
+                   //println "Route: ${route}"
+                   //def routeObj = route.object()
+                   //println "Route: ${routeObj}"
+                   //routeObj.spec.alternateBackends = []
+                   //routeObj.spec.alternateBackends[0] = ["kind": "Service","name": "${B_APP}", "weight": 60] //(2)
+                   //openshift.apply(routeObj) //(3)
                 
             }
     }
 }
         stage('Rollback release') {
+            agent any
+            when{
+            branch 'master'
+            }
             container('kubectl') {
                 checkout scm
                 sh 'sed -i -e \'s#applicationImage: .*$#applicationImage: image-registry.openshift-image-registry.svc:5000/\'$PROJECT\'/\'$IMAGENAME\':\'$TAG\'#g\' app-deploy.yaml'
