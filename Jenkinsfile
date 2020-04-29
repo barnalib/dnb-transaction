@@ -28,7 +28,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
             }
         }
         stage('Set A-B Route') {
-         steps {
+         step {
            script {
               openshift.withCluster() {
                 openshift.withProject() {
