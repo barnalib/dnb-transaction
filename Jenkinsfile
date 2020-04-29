@@ -28,8 +28,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
             }
         }
         stage('Set A-B Route') {
-         step {
-           script {
+           container('kubectl') {
               openshift.withCluster() {
                 openshift.withProject() {
                    def route = openshift.selector("routes", "dnb-transaction") //(1)
@@ -41,7 +40,6 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
                    openshift.apply(routeObj) //(3)
                 }
             }
-        }
     }
 }
         stage('Rollback release') {
