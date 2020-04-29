@@ -35,6 +35,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
                     checkout scm
                     sh 'sed -i -e \'s#applicationImage: .*$#applicationImage: docker-registry.default.svc:5000/\'$PROJECT\'/\'$IMAGENAME\':\'$B_TAG\'#g\' app-deploy.yaml'
                     sh 'sed -i -e \'s#name: .*$#name: \'$B_APP\'#g\' app-deploy.yaml'
+                    sh 'sed -i -e \'s#host: .*$#host: \'$B_APP\'-cpfa-dnb.mcmhub-demo01-32d7c19d4374c7b6f6308b1ef2de3e3e-0001.us-east.containers.appdomain.cloud#g\' app-deploy.yaml'
                     sh 'cat app-deploy.yaml'
                     sh 'find . -name app-deploy.yaml -type f|xargs kubectl apply -f'
                     sh "kubectl get routes"
