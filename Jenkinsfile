@@ -46,7 +46,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
 }
         stage('Rollback release') {
             
-            steps {
+           
                 container('kubectl') {
                     checkout scm
                     sh 'sed -i -e \'s#applicationImage: .*$#applicationImage: image-registry.openshift-image-registry.svc:5000/\'$PROJECT\'/\'$IMAGENAME\':\'$TAG\'#g\' app-deploy.yaml'
@@ -54,7 +54,7 @@ podTemplate(label: 'label', cloud: 'openshift', serviceAccount: 'kabanero-operat
                     sh 'find . -name app-deploy.yaml -type f|xargs kubectl apply -f'
                     sh "kubectl get routes"
                 }
-            }   
+             
         }
     }
 } 
